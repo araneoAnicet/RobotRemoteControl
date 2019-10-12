@@ -3,11 +3,13 @@
 #include <netinet/in.h>
 #include <string>
 #include "ICommand.h"
+#include "IEncryption.h"
 
 
 class Server {
 private:
     int port = 9090;
+    IEncryption* encrypter = nullptr;
     ICommand* executer = nullptr;
     int socketbf;
     char buffer[1024];
