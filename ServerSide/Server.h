@@ -7,6 +7,7 @@
 
 class Server {
 private:
+    int port = 9090;
     ICommand* executer = nullptr;
     int socketbf;
     char buffer[1024];
