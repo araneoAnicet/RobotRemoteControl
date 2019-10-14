@@ -7,6 +7,7 @@ protected:
     char* salt;
 public:
     virtual void encrypt(char* message) = 0;
+    virtual char* decrypt(char* message) = 0;
     virtual bool verify(char* inputMessage) = 0;
     virtual void setSalt(char* salt) = 0;
     virtual char* getEncrypted() = 0;
@@ -34,6 +35,14 @@ public:
             }
         }
         return false;
+    }
+
+    char* decrypt(char* message) override {
+        for (int i = 0; i < 4; i++) {
+            if (strcmp(crypt(this->commands[i], this->salt), message) == 0) {
+                return this->commands[i];
+            }
+        }
     }
 
     char* getEncrypted() override {
