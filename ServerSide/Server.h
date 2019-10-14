@@ -9,7 +9,7 @@
 class Server {
 private:
     int port = 9090;
-    IEncryption* encrypter = nullptr;
+    IEncryption* encryptor = nullptr;
     ICommand* executer = nullptr;
     int socketbf;
     char buffer[1024];
@@ -17,10 +17,12 @@ private:
     sockaddr_in server_addr;
 
     bool dataVerifier(std::string data);
-    void passwrodEncryption(std::string password);
     
 public:
-    Server(std::string password);
+    Server();
+    ~Server();
+    void setEncryptor(IEncryption* encryptor);
+    void setPassword(std::string);
     void setExecuter(ICommand* executer);
     void beginRecv();
 };
