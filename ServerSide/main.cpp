@@ -1,5 +1,7 @@
 #include "Server.cpp"
 
+// g++ main.cpp -lcrypt -o main
+
 int main() {
     Server* controlServer = new Server("13121978");
     IEncryption* encryptor = new DefaultEncryptor();
