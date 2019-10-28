@@ -1,7 +1,6 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <netinet/in.h>
-#include <string>
 #include "ICommand.h"
 #include "IEncryption.h"
 
@@ -13,16 +12,16 @@ private:
     ICommand* executer = nullptr;
     int socketbf;
     char buffer[1024];
-    std::string password;
+    char* password;
     sockaddr_in server_addr;
 
-    bool dataVerifier(std::string data);
+    bool dataVerifier(char* data);
     
 public:
     Server();
     ~Server();
     void setEncryptor(IEncryption* encryptor);
-    void setPassword(std::string);
+    void setPassword(char* password);
     void setExecuter(ICommand* executer);
     void beginRecv();
 };
