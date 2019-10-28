@@ -43,6 +43,7 @@ public:
                 return this->commands[i];
             }
         }
+        return nullptr;
     }
 
     char* getEncrypted() override {
