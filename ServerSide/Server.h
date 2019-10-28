@@ -7,18 +7,21 @@
 
 class Server {
 private:
-    int port = 9090;
+    static const int port = 9090;
     IEncryption* encryptor = nullptr;
     ICommand* executer = nullptr;
-    int socketbf;
-    char buffer[1024];
+    int socketfd;
+    static const int bufferSize = 1024;
+    char buffer[bufferSize];
     char* password;
-    sockaddr_in server_addr;
+    sockaddr_in serverAddr, clientAddr;
 
-    bool dataVerifier(char* data);
-    
+    bool dataVerifier(char* data) {
+        return this->encryptor->verify(data);
+    }
+
 public:
-    Server();
+    Server(char* password);
     ~Server();
     void setEncryptor(IEncryption* encryptor);
     void setPassword(char* password);
