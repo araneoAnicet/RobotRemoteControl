@@ -1,7 +1,7 @@
 #include "Server.h"
 #include <iostream>
 
-Server::Server(char* password) {
+Server::Server(const char* password) {
     this->password = password;
 }
 
@@ -42,7 +42,7 @@ void Server::beginRecv() {
     this->serverAddr.sin_addr.s_addr = INADDR_ANY;
     this->serverAddr.sin_port = htons(this->port);
 
-    std::cout << "Binding socket..." < std::endl;
+    std::cout << "Binding socket..." << std::endl;
 
     if (bind(this->socketfd, (const sockaddr*)&this->serverAddr, sizeof(this->serverAddr)) < 0) {
         std::cout << "Bind failed" << std::endl;

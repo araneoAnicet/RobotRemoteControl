@@ -13,7 +13,7 @@ private:
     int socketfd;
     static const int bufferSize = 1024;
     char buffer[bufferSize];
-    char* password;
+    const char* password;
     sockaddr_in serverAddr, clientAddr;
 
     bool dataVerifier(char* data) {
@@ -21,7 +21,7 @@ private:
     }
 
 public:
-    Server(char* password);
+    Server(const char* password);
     ~Server();
     void setEncryptor(IEncryption* encryptor);
     void setPassword(char* password);
