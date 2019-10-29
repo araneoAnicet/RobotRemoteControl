@@ -6,14 +6,14 @@ Server::Server(const char* password) {
 }
 
 void Server::setEncryptor(IEncryption* encryptor) {
-    if (this->encryptor == nullptr) {
+    if (this->encryptor != nullptr) {
         delete this->encryptor;
     }
     this->encryptor = encryptor;
 }
 
 void Server::setExecuter(ICommand* executer) {
-    if (this->executer == nullptr) {
+    if (this->executer != nullptr) {
         delete this->executer;
     }
     this->executer = executer;
